@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 149335303722800699}
   - component: {fileID: 149335303722800698}
   m_Layer: 5
-  m_Name: bghp_bar
+  m_Name: enemy_bghp_bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -19,6 +19,8 @@ public class Sword_Man : MonoBehaviour
 
     Rigidbody2D rigid2D;
     Animator animator;
+    BoxCollider col2D;
+    
 
     void AttackTrue()
     {
@@ -43,6 +45,7 @@ public class Sword_Man : MonoBehaviour
         nowHp = 50;
         atkDmg = 10;
 
+        col2D = GetComponent<BoxCollider>();
         transform.position = new Vector3(0, 0, 0);
         rigid2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
@@ -73,6 +76,11 @@ public class Sword_Man : MonoBehaviour
             {
                 animator.SetTrigger("attack");
             }
+
+        RaycastHit2D raycastHit = Physics2D.BoxCast(col2D.bounds.center, col2D.bounds.size, Of, Vector2.down, 0.02f, LayerMask.GetMask("Ground"));
+        if (raycastHit.collider != null)
+            animator.SetBool("jumping", false);
+        else animator.SetBool("jumping", true);
     }
 
     void FixedUpdate()
